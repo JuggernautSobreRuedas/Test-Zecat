@@ -13,7 +13,7 @@ describe("Set de pruebas / Muestra Simple", ()=>{
         cy.viewport(1280,800)
     })
     //Producto1
-    it("Tomar verificar del producto en BO", function(){
+    it(`Tomar precio del producto ${product1} en BO`, function(){
         cy.request("https://d2rb7slziwouc6.cloudfront.net/generic_product/3750")
         .its("body")
         .its("generic_product")
@@ -23,11 +23,11 @@ describe("Set de pruebas / Muestra Simple", ()=>{
             cy.log(priceBack)
         })
     })
-    it("Validar que el precio en el ecommerce sea el correcto",()=>{
+    it(`Validar precio de ${product1} en el ecommerce sea el correcto`,()=>{
         cy.visit("http://stage-front.wu6hmgnifa.us-east-1.elasticbeanstalk.com")
         cy.get(".search-input").type(product1, {delay:200})
         cy.get(".search-input").type('{enter}')
-        cy.get('.hide-mobile > .product-name').then($priceEcommerce =>{
+        cy.get('.hide-mobile > .product-name').first().then($priceEcommerce =>{
             priceEcommerce$ = $priceEcommerce.text()
             cy.log(priceEcommerce$)
             expect(priceEcommerce$.slice(1).replace(".", "")).to.be.eq(String(priceBack).replace(".", "")) 
@@ -35,7 +35,7 @@ describe("Set de pruebas / Muestra Simple", ()=>{
         })
     })
     //Producto2
-    it("Tomar verificar del producto en BO", function(){
+    it(`Tomar precio del producto ${product2} en BO`, function(){
         cy.request("https://d2rb7slziwouc6.cloudfront.net/generic_product/3581")
         .its("body")
         .its("generic_product")
@@ -45,7 +45,7 @@ describe("Set de pruebas / Muestra Simple", ()=>{
             cy.log(priceBack)
         })
     })
-    it("Validar que el precio en el ecommerce sea el correcto",()=>{
+    it(`Validar precio de ${product2} en el ecommerce sea el correcto`,()=>{
         cy.visit("http://stage-front.wu6hmgnifa.us-east-1.elasticbeanstalk.com")
         cy.get(".search-input").type(product2, {delay:200})
         cy.get(".search-input").type('{enter}')
@@ -57,7 +57,7 @@ describe("Set de pruebas / Muestra Simple", ()=>{
         })
     })
     //Producto3
-    it("Tomar verificar del producto en BO", function(){
+    it(`Tomar precio del producto ${product3} en BO`, function(){
         cy.request("https://d2rb7slziwouc6.cloudfront.net/generic_product/4762")
         .its("body")
         .its("generic_product")
@@ -67,11 +67,11 @@ describe("Set de pruebas / Muestra Simple", ()=>{
             cy.log(priceBack)
         })
     })
-    it("Validar que el precio en el ecommerce sea el correcto",()=>{
+    it(`Validar precio de ${product3} en el ecommerce sea el correcto`,()=>{
         cy.visit("http://stage-front.wu6hmgnifa.us-east-1.elasticbeanstalk.com")
         cy.get(".search-input").type(product3, {delay:200})
         cy.get(".search-input").type('{enter}')
-        cy.get('.hide-mobile > .product-name').then($priceEcommerce =>{
+        cy.get('.hide-mobile > .product-name').first().then($priceEcommerce =>{
             priceEcommerce$ = $priceEcommerce.text()
             cy.log(priceEcommerce$)
             expect(priceEcommerce$.slice(1).replace(".", "")).to.be.eq(String(priceBack).replace(".", "")) 
