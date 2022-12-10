@@ -6,8 +6,8 @@ class productDetailPage {
         
     }
 
-    cachProductName(name) {
-        this.elements.productLabel().then(name)
+    cachProductName() {
+   
     }
 
     //cachProductPrice(price) {
