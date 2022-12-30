@@ -1,4 +1,4 @@
-class loginPage {
+class boLoginPage {
     
     elements = {
         usernameInput: ()=> cy.get('[label="Ingrese su usuario"] > .input-custom'),
@@ -8,18 +8,12 @@ class loginPage {
 
     }
     
-    typeUsername(user) {
+    login(user,pass) {
         this.elements.usernameInput().type(user)
-    }
-
-    typePassword(pass) {
         this.elements.passwordInput().type(pass)
-    }
-
-    selectButton() {
         this.elements.loginButton().click()
     }
     
 }
 
-module.exports = new loginPage();
+module.exports = new boLoginPage();

@@ -1,4 +1,4 @@
-import productDetailPage from '../../pages/zecat/productDetailPage';
+
 
 class productPage {
     elements = {
@@ -35,13 +35,12 @@ class productPage {
       }
 
     obtainProductName() {
-        var productName
-        var categorys = ["2022 Mundial","2022 Novedades 1","Apparel","Apparel - Invierno","Apparel - Remeras",
-                        "Bolsos y Mochilas","Cocina","Coolers y luncheras","Drinkware","Escritorio",
+        var categorys = ["2022 Novedades 1","Apparel","Apparel - Invierno","Apparel - Remeras",
+                        "Bolsos y Mochilas","Coolers y luncheras","Drinkware","Escritorio",
                         "Escritura","Gorros","Hogar y Tiempo Libre","Paraguas","Tazas","Tecnología"]
         
         
-        var indice = this.getRandomNumber(16,0);
+        var indice = this.getRandomNumber(13,0);
         var category = categorys[indice]
         cy.wait(9000);
         this.selectCategorySelector();
@@ -49,7 +48,7 @@ class productPage {
         this.selectPublished();
         this.search();
         cy.wait(2000)
-        indice = this.getRandomNumber(8,0);
+        indice = this.getRandomNumber(8,1);
         this.elements.detailButton(indice).click();    
     }
 
