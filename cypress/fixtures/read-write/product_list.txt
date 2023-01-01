@@ -1,9 +1,8 @@
 {
-  "productName": "Campera Windbreaker Cardon",
-  "productPrice": "20909.99",
-  "productPrice2": "2090999",
+  "productName": "Bol Tyrell",
+  "productPrice": "91.99",
+  "productPrice2": "9199",
   "productCategory": [
-    "Apparel",
-    "Apparel - Invierno"
+    "Escritura"
   ]
 }
