@@ -1,5 +1,4 @@
-
-
+var maX 
 class productPage {
     elements = {
 
@@ -30,25 +29,17 @@ class productPage {
         this.elements.productCategory(category).click()
     }
     
-    getRandomNumber(max,min) {
+    getRandomNumber(min,max) {
         return Math.floor(Math.random() * (max - min) + min);
       }
-    
+
     quantityProductRows() {
-        let cantidad=0
     
-     //   cy.log("##sdfsdf")
-     cy.wait(9000)
-        cy.get('[class= "el-table_1_column_6   el-table__cell"]').its('length').then((res)=>{
-            
-            cy.log("res--->"+res)
-            cantidad=res
-      })
+        cy.wait(2000)
+        cy.get('[class= "el-table__body-wrapper is-scrolling-none"]> .el-table__body > tbody > .el-table__row').its('length').then(res => {
+            maX = res
+        })
       
-       /* cy.get('[class= "el-table_1_column_6   el-table__cell"]').then($indiceDetalle => {
-           //cy.log(Cypress.$($indiceDetalle).length)
-            return 1 // Cypress.$($indiceDetalle).length
-           })*/
     }
 
     enterProductDetail() {
@@ -56,8 +47,7 @@ class productPage {
                         "Bolsos y Mochilas","Coolers y luncheras","Drinkware","Escritorio",
                         "Escritura","Gorros","Hogar y Tiempo Libre","Paraguas","Tazas","Tecnología"]
         
-        
-        var indice = this.getRandomNumber(13,0);
+        var indice = this.getRandomNumber(0,13);
         var category = categorys[indice]
         cy.wait(9000);
         this.selectCategorySelector();
@@ -65,7 +55,7 @@ class productPage {
         this.selectPublished();
         this.search();
         cy.wait(2000)
-        indice = this.getRandomNumber(8,1);
+        indice = this.getRandomNumber(1,maX);
         this.elements.detailButtonSelect(indice).click();    
     }
 

@@ -15,7 +15,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 const productNameFile = "cypress/fixtures/read-write/product_list.txt"
 var boProductName
 var boProductPrice
-var indiceDetalle = 0
 
 describe("Check the correct price", ()=>{
 
@@ -27,17 +26,17 @@ describe("Check the correct price", ()=>{
         cy.visit("http://zecat-backoffice-stage.s3-website-us-east-1.amazonaws.com");
         //Log in on Backoffice
         boLoginPage.login('SFIORENTINO@MOBEATS.COM.AR','carapa1212');
+        cy.wait(10000)
     })
 
     it("Obtain Product",()=>{
         boHome.selectProductOption();
-        cy.wait(9000)
-        //productPage.enterProductDetail();
-        cy.log(productPage.quantityProductRows())
-        //productDetailPage.cachProductDetails()
+        cy.wait(20000)
+        productPage.enterProductDetail();
+        productDetailPage.cachProductDetails()
     })
 
-    /*it("Check the displayed and price the result page", ()=>{
+    it("Check the displayed and price the result page", ()=>{
         cy.visit("http://stage-front.wu6hmgnifa.us-east-1.elasticbeanstalk.com/")
         cy.readFile(productNameFile).then($product =>{
             boProductName = JSON.parse($product).productName
@@ -64,5 +63,5 @@ describe("Check the correct price", ()=>{
                 expect($price.text().replace(".", "")).to.be.eq(`$${boProductPrice}`)
             })
         })
-    })*/
+    })
 })  
